@@ -21,6 +21,20 @@ const todoSlice = createSlice({
       if (todo) {
         todo.completed = !todo.completed
       }
+    },
+    removeTodo: (state, action) => {
+      const index = state.findIndex(todo => todo.id === action.payload)
+      if (index !== -1) {
+        state.splice(index, 1)
+      }
+    },
+    updateTodo: (state, action) => {
+      const { id, text, completed } = action.payload
+      const todo = state.find(todo => todo.id === id)
+      if (todo) {
+        todo.text = text
+        todo.completed = completed
+      }
     }
   }
 })
@@ -29,6 +43,6 @@ const store = configureStore({
   reducer: todoSlice.reducer
 })
 
-export const { addTodo, toggleTodo } = todoSlice.actions
+export const { addTodo, toggleTodo, removeTodo, updateTodo  } = todoSlice.actions
 
 export default store

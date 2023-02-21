@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addTodo, toggleTodo } from '../redux/store';
+import { addTodo, toggleTodo, removeTodo  } from '../redux/store';
 import { Button, Checkbox, Box, Table, TableBody, TableCell, TableHead, TableRow, TextField, Toolbar, Typography } from '@mui/material';
 
 export default function Product() {
@@ -33,6 +33,10 @@ export default function Product() {
     console.log(filter);
   }
 
+  const handleDelete = (id) => {
+    dispatch(removeTodo(id))
+  }
+
   return (
     <div style={{ marginTop: '50px' }}>
       <h1>Product Manager</h1>
@@ -48,7 +52,7 @@ export default function Product() {
             <TableCell sx={{ color: "blue", fontWeight: "bold" }}>ID</TableCell>
             <TableCell sx={{ color: "blue", fontWeight: "bold" }}>Product</TableCell>
             <TableCell sx={{ color: "red", fontWeight: "bold" }} align="right">Soft-delete</TableCell>
-            <TableCell sx={{ color: "grey", fontWeight: "bold" }} align="right">Action</TableCell>
+            <TableCell sx={{ color: "grey", fontWeight: "bold" }} align="right"></TableCell>
           </TableRow>
         </TableHead>
 
@@ -61,7 +65,7 @@ export default function Product() {
                     <TableCell component="th" scope="row">{todo.id}</TableCell>
                     <TableCell style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>{todo.text}</TableCell>
                     <TableCell align="right"><Checkbox checked={todo.completed} onChange={() => handleToggleTodo(todo.id)} /></TableCell>
-                    <TableCell align="right"><Button variant="contained" color="inherit">Update</Button></TableCell>
+                    <TableCell align="right"><Button variant="contained" color="inherit" sx={{ marginRight: "5px" }} >Update</Button><Button variant="contained" color="error" onClick={() => handleDelete(todo.id)}>Delete</Button></TableCell>
                   </TableRow>
                 );
               } else {
@@ -75,14 +79,41 @@ export default function Product() {
                 <TableCell component="th" scope="row">{todo.id}</TableCell>
                 <TableCell style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>{todo.text}</TableCell>
                 <TableCell align="right"><Checkbox checked={todo.completed} onChange={() => handleToggleTodo(todo.id)} /></TableCell>
-                <TableCell align="right"><Button variant="contained" color="inherit">Update</Button></TableCell>
+                <TableCell align="right"><Button variant="contained" color="inherit" sx={{ marginRight: "5px" }} >Update</Button><Button variant="contained" color="error" onClick={() => handleDelete(todo.id)}>Delete</Button></TableCell>
               </TableRow>
             );
           })}
-
 
       </Table>
 
     </div>
   );
 }
+
+// import React, { useState } from 'react'
+// import { useDispatch } from 'react-redux'
+// import { updateTodo } from './store/todos'
+
+// function TodoItem({ todo }) {
+//   const [text, setText] = useState(todo.text)
+//   const [completed, setCompleted] = useState(todo.completed)
+//   const dispatch = useDispatch()
+
+//   const handleSave = () => {
+//     dispatch(updateTodo({
+//       id: todo.id,
+//       text,
+//       completed
+//     }))
+//   }
+
+//   return (
+//     <li>
+//       <input type="text" value={text} onChange={(e) => setText(e.target.value)} />
+//       <input type="checkbox" checked={completed} onChange={(e) => setCompleted(e.target.checked)} />
+//       <button onClick={handleSave}>Save</button>
+//     </li>
+//   )
+// }
+
+// export default TodoItem
