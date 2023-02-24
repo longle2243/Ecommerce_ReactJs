@@ -39,7 +39,7 @@ export default function Product() {
   }
 
   function searchName(e) {
-    const filter = listProduct.filter((product) => { return product.name.toLowerCase().includes(e.toLowerCase()) })
+    const filter = listProduct.filter((product) => { return product.name.nameProduct.toLowerCase().includes(e.toLowerCase()) })
     setFilterProduct(filter)
   }
 
