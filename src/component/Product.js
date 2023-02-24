@@ -1,49 +1,47 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addTodo, toggleTodo, removeTodo  } from '../redux/store';
+import { createProduct, softDeleteProduct, deleteProduct } from '../redux/store';
 import { Button, Checkbox, Box, Table, TableBody, TableCell, TableHead, TableRow, TextField, Toolbar, Typography } from '@mui/material';
 
 export default function Product() {
-  const todos = useSelector(state => state);
+  const listProduct = useSelector(state => state);
   const dispatch = useDispatch();
-  const [newTodo, setNewTodo] = useState('');
 
-  const [value, setValue] = useState('');
-  const [filterdata, setFilterdata] = useState('');
+  const [newProduct, setNewProduct] = useState('');
+  const [inputSearch, setInputSearch] = useState('');
+  const [filterProduct, setFilterProduct] = useState('');
 
-  const handleAddTodo = () => {
-    if (newTodo) {
-      dispatch(addTodo(newTodo));
-      setNewTodo('');
+  const handleCreateProduct = () => {
+    if (newProduct) {
+      dispatch(createProduct(newProduct));
+      setNewProduct('');
     }
   };
 
-  const handleToggleTodo = (id) => {
-    dispatch(toggleTodo(id));
+  const handleSoftDeleteProduct = (id) => {
+    dispatch(softDeleteProduct(id));
   };
 
-  function savevalue(e) {
-    setValue(e.target.value)
-    searchname(e.target.value)
+  const handleDeleteProduct = (id) => {
+    dispatch(deleteProduct(id))
   }
 
-  function searchname(e) {
-    const filter = todos.filter((user) => { return user.text.toLowerCase().includes(e.toLowerCase()) })
-    setFilterdata(filter)
-    console.log(filter);
+  function handleSearchName(e) {
+    setInputSearch(e.target.value)
+    searchName(e.target.value)
   }
 
-  const handleDelete = (id) => {
-    dispatch(removeTodo(id))
+  function searchName(e) {
+    const filter = listProduct.filter((product) => { return product.name.toLowerCase().includes(e.toLowerCase()) })
+    setFilterProduct(filter)
   }
 
   return (
     <div style={{ marginTop: '50px' }}>
-      <h1>Product Manager</h1>
       <Box display="flex" alignItems="center" justifyContent="center" flexDirection="row">
-        <TextField label="create product" variant="outlined" size="small" value={newTodo} onChange={e => setNewTodo(e.target.value)} sx={{ marginRight: "5px" }} />
-        <Button variant="contained" color="success" size="small" onClick={handleAddTodo} sx={{ marginRight: "200px" }} >Create</Button>
-        <TextField label="Search product" variant="outlined" size="small" value={value} onChange={savevalue} />
+        <TextField label="create product" variant="outlined" size="small" value={newProduct} onChange={e => setNewProduct(e.target.value)} sx={{ marginRight: "5px" }} />
+        <Button variant="contained" color="success" size="small" onClick={handleCreateProduct} sx={{ marginRight: "200px" }} >Create</Button>
+        <TextField label="Search product" variant="outlined" size="small" value={inputSearch} onChange={handleSearchName} />
       </Box>
 
       <Table sx={{ minWidth: 650, maxWidth: 1000, m: "auto", mt: "50px" }}>
@@ -52,20 +50,23 @@ export default function Product() {
             <TableCell sx={{ color: "blue", fontWeight: "bold" }}>ID</TableCell>
             <TableCell sx={{ color: "blue", fontWeight: "bold" }}>Product</TableCell>
             <TableCell sx={{ color: "red", fontWeight: "bold" }} align="right">Soft-delete</TableCell>
-            <TableCell sx={{ color: "grey", fontWeight: "bold" }} align="right"></TableCell>
+            <TableCell sx={{ color: "grey", fontWeight: "bold" }} align="right">---</TableCell>
           </TableRow>
         </TableHead>
 
-        {filterdata.length > 0
-          ? filterdata.map((data) => {
-            return todos.map((todo) => {
-              if (todo.text == data.text) {
+        {filterProduct.length > 0
+          ? filterProduct.map((data) => {
+            return listProduct.map((todo) => {
+              if (todo.name == data.name) {
                 return (
                   <TableRow key={todo.id}>
                     <TableCell component="th" scope="row">{todo.id}</TableCell>
-                    <TableCell style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>{todo.text}</TableCell>
-                    <TableCell align="right"><Checkbox checked={todo.completed} onChange={() => handleToggleTodo(todo.id)} /></TableCell>
-                    <TableCell align="right"><Button variant="contained" color="inherit" sx={{ marginRight: "5px" }} >Update</Button><Button variant="contained" color="error" onClick={() => handleDelete(todo.id)}>Delete</Button></TableCell>
+                    <TableCell style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>{todo.name}</TableCell>
+                    <TableCell align="right"><Checkbox checked={todo.completed} onChange={() => handleSoftDeleteProduct(todo.id)} /></TableCell>
+                    <TableCell align="right">
+                      <Button variant="contained" color="inherit" sx={{ marginRight: "5px" }} >Update</Button>
+                      <Button variant="contained" color="error" onClick={() => handleDeleteProduct(todo.id)}>Delete</Button>
+                    </TableCell>
                   </TableRow>
                 );
               } else {
@@ -73,13 +74,16 @@ export default function Product() {
               }
             });
           })
-          : todos.map((todo) => {
+          : listProduct.map((todo) => {
             return (
               <TableRow key={todo.id}>
                 <TableCell component="th" scope="row">{todo.id}</TableCell>
-                <TableCell style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>{todo.text}</TableCell>
-                <TableCell align="right"><Checkbox checked={todo.completed} onChange={() => handleToggleTodo(todo.id)} /></TableCell>
-                <TableCell align="right"><Button variant="contained" color="inherit" sx={{ marginRight: "5px" }} >Update</Button><Button variant="contained" color="error" onClick={() => handleDelete(todo.id)}>Delete</Button></TableCell>
+                <TableCell style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>{todo.name}</TableCell>
+                <TableCell align="right"><Checkbox checked={todo.completed} onChange={() => handleSoftDeleteProduct(todo.id)} /></TableCell>
+                <TableCell align="right">
+                  <Button variant="contained" color="inherit" sx={{ marginRight: "5px" }} >Update</Button>
+                  <Button variant="contained" color="error" onClick={() => handleDeleteProduct(todo.id)}>Delete</Button>
+                </TableCell>
               </TableRow>
             );
           })}
