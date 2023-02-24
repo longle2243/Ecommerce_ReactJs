@@ -1,11 +1,11 @@
 import { createSlice, configureStore } from '@reduxjs/toolkit'
 
 const todoSlice = createSlice({
-  name: 'todos',
+  name: 'product',
   initialState: [
-    {id: "1000000000000",name: "Macbook Air 2",completed: false},
-    {id: "1000000000001",name: "Iphone 11",completed: false},
-    {id: "1000000000002",name: "Iphone 14 Pro max",completed: false},
+    {id: "1000000000000",name: { nameProduct: "Macbook Air 2", priceProduct: "24tr", amountProduct: "1000", categoryProduct: "Laptop" },completed: false},
+    {id: "1000000000001",name: { nameProduct: "Iphone 11", priceProduct: "14tr", amountProduct: "800", categoryProduct: "Smartphone" },completed: false},
+    {id: "1000000000002",name: { nameProduct: "Iphone 14 Pro max", priceProduct: "52tr", amountProduct: "300", categoryProduct: "Smartphone" },completed: false},
   ],
   reducers: {
     createProduct: (state, action) => {

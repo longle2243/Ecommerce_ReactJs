@@ -7,14 +7,21 @@ export default function Product() {
   const listProduct = useSelector(state => state);
   const dispatch = useDispatch();
 
-  const [newProduct, setNewProduct] = useState('');
+  const [nameProduct, setNameProduct] = useState('');
+  const [priceProduct, setPriceProduct] = useState('');
+  const [amountProduct, setAmountProduct] = useState('');
+  const [categoryProduct, setCategoryProduct] = useState('');
+
   const [inputSearch, setInputSearch] = useState('');
   const [filterProduct, setFilterProduct] = useState('');
 
   const handleCreateProduct = () => {
-    if (newProduct) {
-      dispatch(createProduct(newProduct));
-      setNewProduct('');
+    if (nameProduct) {
+      dispatch(createProduct({ nameProduct: nameProduct, priceProduct: priceProduct, amountProduct: amountProduct, categoryProduct: categoryProduct }));
+      setNameProduct('')
+      setPriceProduct('')
+      setAmountProduct('')
+      setCategoryProduct('')
     }
   };
 
@@ -38,17 +45,41 @@ export default function Product() {
 
   return (
     <div style={{ marginTop: '50px' }}>
-      <Box display="flex" alignItems="center" justifyContent="center" flexDirection="row">
-        <TextField label="create product" variant="outlined" size="small" value={newProduct} onChange={e => setNewProduct(e.target.value)} sx={{ marginRight: "5px" }} />
+      {/* <Box display="flex" alignItems="center" justifyContent="center" flexDirection="row">
+        <TextField label="Create product" variant="outlined" size="small" value={newProduct} onChange={e => setNewProduct(e.target.value)} sx={{ marginRight: "5px" }} />
+        <TextField label="Create product" variant="outlined" size="small" value={newProduct} onChange={e => setNewProduct(e.target.value)} sx={{ marginRight: "5px" }} />
         <Button variant="contained" color="success" size="small" onClick={handleCreateProduct} sx={{ marginRight: "200px" }} >Create</Button>
         <TextField label="Search product" variant="outlined" size="small" value={inputSearch} onChange={handleSearchName} />
+      </Box> */}
+      <Box display="flex" alignItems="center" justifyContent="center" flexDirection="row">
+
+        <Box display="flex" alignItems="center" justifyContent="center" flexDirection="column">
+          <Box display="flex" alignItems="center" justifyContent="center" flexDirection="row">
+            <TextField label="Name product" variant="outlined" size="small" value={nameProduct} onChange={e => setNameProduct(e.target.value)} sx={{ marginRight: "5px" }} />
+            <TextField label="Price product" variant="outlined" size="small" value={priceProduct} onChange={e => setPriceProduct(e.target.value)} sx={{ marginRight: "5px" }} />
+          </Box>
+
+          <Box display="flex" alignItems="center" justifyContent="center" flexDirection="row" sx={{ mt: 0.5 }}>
+            <TextField label="Amount product" variant="outlined" size="small" value={amountProduct} onChange={e => setAmountProduct(e.target.value)} sx={{ marginRight: "5px" }} />
+            <TextField label="Category product" variant="outlined" size="small" value={categoryProduct} onChange={e => setCategoryProduct(e.target.value)} sx={{ marginRight: "5px" }} />
+          </Box>
+        </Box>
+
+        <Box display="flex" alignItems="center" justifyContent="center" flexDirection="row">
+          <Button variant="contained" color="success" size="small" onClick={handleCreateProduct} sx={{ marginRight: "100px" }} >Create</Button>
+          <TextField label="Search product" variant="outlined" size="small" value={inputSearch} onChange={handleSearchName} />
+        </Box>
       </Box>
+
 
       <Table sx={{ minWidth: 650, maxWidth: 1000, m: "auto", mt: "50px" }}>
         <TableHead>
           <TableRow>
             <TableCell sx={{ color: "blue", fontWeight: "bold" }}>ID</TableCell>
-            <TableCell sx={{ color: "blue", fontWeight: "bold" }}>Product</TableCell>
+            <TableCell sx={{ color: "blue", fontWeight: "bold" }}>Name</TableCell>
+            <TableCell sx={{ color: "blue", fontWeight: "bold" }}>Price</TableCell>
+            <TableCell sx={{ color: "blue", fontWeight: "bold" }}>Amount</TableCell>
+            <TableCell sx={{ color: "blue", fontWeight: "bold" }}>Category</TableCell>
             <TableCell sx={{ color: "red", fontWeight: "bold" }} align="right">Soft-delete</TableCell>
             <TableCell sx={{ color: "grey", fontWeight: "bold" }} align="right">---</TableCell>
           </TableRow>
@@ -61,7 +92,10 @@ export default function Product() {
                 return (
                   <TableRow key={todo.id}>
                     <TableCell component="th" scope="row">{todo.id}</TableCell>
-                    <TableCell style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>{todo.name}</TableCell>
+                    <TableCell style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>{todo.name.nameProduct}</TableCell>
+                    <TableCell style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>{todo.name.priceProduct}</TableCell>
+                    <TableCell style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>{todo.name.amountProduct}</TableCell>
+                    <TableCell style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>{todo.name.categoryProduct}</TableCell>
                     <TableCell align="right"><Checkbox checked={todo.completed} onChange={() => handleSoftDeleteProduct(todo.id)} /></TableCell>
                     <TableCell align="right">
                       <Button variant="contained" color="inherit" sx={{ marginRight: "5px" }} >Update</Button>
@@ -75,10 +109,14 @@ export default function Product() {
             });
           })
           : listProduct.map((todo) => {
+            console.log(todo.name);
             return (
               <TableRow key={todo.id}>
                 <TableCell component="th" scope="row">{todo.id}</TableCell>
-                <TableCell style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>{todo.name}</TableCell>
+                <TableCell style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>{todo.name.nameProduct}</TableCell>
+                <TableCell style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>{todo.name.priceProduct}</TableCell>
+                <TableCell style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>{todo.name.amountProduct}</TableCell>
+                <TableCell style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>{todo.name.categoryProduct}</TableCell>
                 <TableCell align="right"><Checkbox checked={todo.completed} onChange={() => handleSoftDeleteProduct(todo.id)} /></TableCell>
                 <TableCell align="right">
                   <Button variant="contained" color="inherit" sx={{ marginRight: "5px" }} >Update</Button>
