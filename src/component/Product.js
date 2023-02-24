@@ -1,7 +1,14 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { createProduct, softDeleteProduct, deleteProduct } from '../redux/store';
-import { Button, Checkbox, Box, Table, TableBody, TableCell, TableHead, TableRow, TextField, Toolbar, Typography } from '@mui/material';
+import { Button, Checkbox, Box, Table, TableCell, TableHead, TableRow, TextField, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
+
+
+const options = [
+  { value: 'smartphone', label: 'Smart Phone' },
+  { value: 'laptop', label: 'Laptop' },
+  { value: 'tablet', label: 'Tablet' },
+];
 
 export default function Product() {
   const listProduct = useSelector(state => state);
@@ -38,6 +45,10 @@ export default function Product() {
     searchName(e.target.value)
   }
 
+  function handleSelect(e) {
+    setCategoryProduct(e.target.value)
+  }
+
   function searchName(e) {
     const filter = listProduct.filter((product) => { return product.name.nameProduct.toLowerCase().includes(e.toLowerCase()) })
     setFilterProduct(filter)
@@ -45,12 +56,6 @@ export default function Product() {
 
   return (
     <div style={{ marginTop: '50px' }}>
-      {/* <Box display="flex" alignItems="center" justifyContent="center" flexDirection="row">
-        <TextField label="Create product" variant="outlined" size="small" value={newProduct} onChange={e => setNewProduct(e.target.value)} sx={{ marginRight: "5px" }} />
-        <TextField label="Create product" variant="outlined" size="small" value={newProduct} onChange={e => setNewProduct(e.target.value)} sx={{ marginRight: "5px" }} />
-        <Button variant="contained" color="success" size="small" onClick={handleCreateProduct} sx={{ marginRight: "200px" }} >Create</Button>
-        <TextField label="Search product" variant="outlined" size="small" value={inputSearch} onChange={handleSearchName} />
-      </Box> */}
       <Box display="flex" alignItems="center" justifyContent="center" flexDirection="row">
 
         <Box display="flex" alignItems="center" justifyContent="center" flexDirection="column">
@@ -61,7 +66,15 @@ export default function Product() {
 
           <Box display="flex" alignItems="center" justifyContent="center" flexDirection="row" sx={{ mt: 0.5 }}>
             <TextField label="Amount product" variant="outlined" size="small" value={amountProduct} onChange={e => setAmountProduct(e.target.value)} sx={{ marginRight: "5px" }} />
-            <TextField label="Category product" variant="outlined" size="small" value={categoryProduct} onChange={e => setCategoryProduct(e.target.value)} sx={{ marginRight: "5px" }} />
+            <FormControl sx={{ m: 1, minWidth: 220 }} size="small">
+              <Select value={categoryProduct} onChange={handleSelect} label="Category product">
+                {options.map(option => (
+                  <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
           </Box>
         </Box>
 
