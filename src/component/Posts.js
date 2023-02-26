@@ -75,7 +75,6 @@ const PostsList = ({ posts }) => {
                         </CardActionArea>
                       </Card>
                     </Link>
-
                   </Box>
                 ))}
               </Table>

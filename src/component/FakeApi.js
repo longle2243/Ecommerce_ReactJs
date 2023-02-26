@@ -46,7 +46,7 @@ export default class FakeApi extends Component {
   }
 
   removeItem(item){
-    const rm=this.state.data.splice(this.state.data.indexOf(item.data),1)
+    this.state.data.splice(this.state.data.indexOf(item.data),1)
     this.searchname("")
   }
 

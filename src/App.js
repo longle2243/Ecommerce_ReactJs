@@ -1,21 +1,24 @@
-
 import React, { Component } from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Product from './component/Product';
-import Home from './component/Home';
-import FakeApi from './component/FakeApi';
-import User from './component/User';
-import Posts from './component/Posts';
+
+import Navbar from './component/Navbar';
+import Home from './page/Home';
+import Product from './page/Product';
+import Cart from './page/Cart';
+import Pay from './page/Pay';
+import Contact from './page/Contact';
+
 export default class App extends Component {
   render() {
     return (
       <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />}>
-          <Route index element={<User />} />
-          <Route path="post/*" element={ <Posts />} />
+        <Route path="/" element={<Navbar />}>
+          <Route index element={<Home />} />
           <Route path="product/" element={ <Product />} />
-          <Route path="fakeapi/" element={ <FakeApi />} />
+          <Route path="cart/" element={ <Cart />} />
+          <Route path="pay/" element={ <Pay />} />
+          <Route path="contact/" element={ <Contact />} />
         </Route>
       </Routes>
     </BrowserRouter>
