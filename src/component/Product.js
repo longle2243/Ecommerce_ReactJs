@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { createProduct, softDeleteProduct, deleteProduct } from '../redux/store';
-import { Button, Checkbox, Box, Table, TableCell, TableHead, TableRow, TextField, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
+import { Button, Checkbox, Box, Table, TableCell, TableHead, TableRow, TextField, Select, MenuItem, FormControl, Card, CardContent, CardActionArea, CardMedia, Typography } from '@mui/material';
 
 
 const options = [
@@ -54,6 +54,10 @@ export default function Product() {
     setFilterProduct(filter)
   }
 
+  function handleFileInputChange(event) {
+    const file = event.target.files[0];
+    console.log(file);
+  }
   return (
     <div style={{ marginTop: '50px' }}>
       <Box display="flex" alignItems="center" justifyContent="center" flexDirection="row">
@@ -76,6 +80,7 @@ export default function Product() {
               </Select>
             </FormControl>
           </Box>
+          <input type="file" onChange={handleFileInputChange} />
         </Box>
 
         <Box display="flex" alignItems="center" justifyContent="center" flexDirection="row">
@@ -135,6 +140,20 @@ export default function Product() {
                   <Button variant="contained" color="inherit" sx={{ marginRight: "5px" }} >Update</Button>
                   <Button variant="contained" color="error" onClick={() => handleDeleteProduct(todo.id)}>Delete</Button>
                 </TableCell>
+
+                <TableCell>
+                  <Card sx={{ maxWidth: 345, boxShadow: 5 }}>
+                    {/* <img src="./img/ip13.jpg" alt="" /> */}
+                    <CardMedia sx={{ height: 240, width: 300 }} image={todo.name.img} />
+                    {/* <CardActionArea>
+                      <CardContent>
+                        <Typography gutterBottom variant="h5" component="div">{item.id}</Typography>
+                        <Typography variant="body2" color="text.secondary">{item.title}</Typography>
+                      </CardContent>
+                    </CardActionArea> */}
+                  </Card>
+                </TableCell>
+
               </TableRow>
             );
           })}
