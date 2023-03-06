@@ -143,14 +143,13 @@ export default function Product() {
 
                 <TableCell>
                   <Card sx={{ maxWidth: 345, boxShadow: 5 }}>
-                    {/* <img src="./img/ip13.jpg" alt="" /> */}
                     <CardMedia sx={{ height: 240, width: 300 }} image={todo.name.img} />
-                    {/* <CardActionArea>
+                    <CardActionArea>
                       <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">{item.id}</Typography>
-                        <Typography variant="body2" color="text.secondary">{item.title}</Typography>
+                        <Typography gutterBottom variant="h5" component="div">{todo.name.nameProduct}</Typography>
+                        <Typography variant="body2" color="text.secondary">{todo.name.priceProduct}</Typography>
                       </CardContent>
-                    </CardActionArea> */}
+                    </CardActionArea>
                   </Card>
                 </TableCell>
 
