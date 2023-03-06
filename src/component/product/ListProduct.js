@@ -24,90 +24,41 @@ export default function ListProduct() {
 
   return (
     <div style={{ marginTop: '50px' }}>
-      {filterProduct.length > 0
-        ? filterProduct.map((data) => {
-          return listProduct.map((todo) => {
-            if (todo.name == data.name) {
-              return (
-                <h1>NO</h1>
-              );
-            } else {
-              return null;
-            }
-          });
-        })
-        : listProduct.map((todo) => {
-          console.log(todo.name);
-          return (
-            <Box display="flex" alignItems="center" justifyContent="center" flexDirection="row" sx={{ maxWidth: 1600, m: "auto" }}>
-              <Link style={{ color: "blue", textDecoration: "none", margin: "auto", marginTop: 30 }} key={todo.id}>
-                <Card sx={{ maxWidth: 345, boxShadow: 5 }}>
-                  <CardMedia sx={{ height: 300, width: 300 }} image={todo.name.img} />
-                  <CardActionArea>
-                    <CardContent>
-                      <Typography gutterBottom variant="h5" component="div">{todo.name.priceProduct}</Typography>
-                      <Typography variant="body2" color="text.secondary">{todo.name.nameProduct}</Typography>
-                      <Typography variant="body2" color="text.secondary">{todo.name.categoryProduct}</Typography>
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
-              </Link>
+      <Box display="flex" alignItems="center" justifyContent="center" flexDirection="row" flexWrap="wrap" sx={{ maxWidth: 1600, m: "auto" }}>
+        {filterProduct.length > 0
+          ? filterProduct.map((data) => {
+            return listProduct.map((todo) => {
+              if (todo.name == data.name) {
+                return (
+                  <h1>NO</h1>
+                );
+              } else {
+                return null;
+              }
+            });
+          })
+          : listProduct.map((todo) => {
+            console.log(todo.name);
+            return (
+              <Box flexBasis="25%" display="flex" alignItems="center" justifyContent="center" flexDirection="column" sx={{ maxWidth: 1000, m: "auto" }}>
 
-              <Link style={{ color: "blue", textDecoration: "none", margin: "auto", marginTop: 30 }} key={todo.id}>
-                <Card sx={{ maxWidth: 345, boxShadow: 5 }}>
-                  <CardMedia sx={{ height: 300, width: 300 }} image={todo.name.img} />
-                  <CardActionArea>
-                    <CardContent>
-                      <Typography gutterBottom variant="h5" component="div">{todo.name.priceProduct}</Typography>
-                      <Typography variant="body2" color="text.secondary">{todo.name.nameProduct}</Typography>
-                      <Typography variant="body2" color="text.secondary">{todo.name.categoryProduct}</Typography>
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
-              </Link> 
+                <Link style={{ color: "blue", textDecoration: "none", margin: "auto", marginTop: 30 }} key={todo.id}>
+                  <Card sx={{ maxWidth: 345, boxShadow: 5 }}>
+                    <CardMedia sx={{ height: 300, width: 300 }} image={todo.name.img} />
+                    <CardActionArea>
+                      <CardContent>
+                        <Typography gutterBottom variant="h5" component="div">{todo.name.priceProduct}</Typography>
+                        <Typography variant="body2" color="text.secondary">{todo.name.nameProduct}</Typography>
+                        <Typography variant="body2" color="text.secondary">{todo.name.categoryProduct}</Typography>
+                      </CardContent>
+                    </CardActionArea>
+                  </Card>
+                </Link>
 
-              <Link style={{ color: "blue", textDecoration: "none", margin: "auto", marginTop: 30 }} key={todo.id}>
-                <Card sx={{ maxWidth: 345, boxShadow: 5 }}>
-                  <CardMedia sx={{ height: 300, width: 300 }} image={todo.name.img} />
-                  <CardActionArea>
-                    <CardContent>
-                      <Typography gutterBottom variant="h5" component="div">{todo.name.priceProduct}</Typography>
-                      <Typography variant="body2" color="text.secondary">{todo.name.nameProduct}</Typography>
-                      <Typography variant="body2" color="text.secondary">{todo.name.categoryProduct}</Typography>
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
-              </Link>
-
-              <Link style={{ color: "blue", textDecoration: "none", margin: "auto", marginTop: 30 }} key={todo.id}>
-                <Card sx={{ maxWidth: 345, boxShadow: 5 }}>
-                  <CardMedia sx={{ height: 300, width: 300 }} image={todo.name.img} />
-                  <CardActionArea>
-                    <CardContent>
-                      <Typography gutterBottom variant="h5" component="div">{todo.name.priceProduct}</Typography>
-                      <Typography variant="body2" color="text.secondary">{todo.name.nameProduct}</Typography>
-                      <Typography variant="body2" color="text.secondary">{todo.name.categoryProduct}</Typography>
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
-              </Link>
-
-              <Link style={{ color: "blue", textDecoration: "none", margin: "auto", marginTop: 30 }} key={todo.id}>
-                <Card sx={{ maxWidth: 345, boxShadow: 5 }}>
-                  <CardMedia sx={{ height: 300, width: 300 }} image={todo.name.img} />
-                  <CardActionArea>
-                    <CardContent>
-                      <Typography gutterBottom variant="h5" component="div">{todo.name.priceProduct}</Typography>
-                      <Typography variant="body2" color="text.secondary">{todo.name.nameProduct}</Typography>
-                      <Typography variant="body2" color="text.secondary">{todo.name.categoryProduct}</Typography>
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
-              </Link>
-
-            </Box>
-          );
-        })}
+              </Box>
+            );
+          })}
+      </Box>
     </div>
   );
 }
