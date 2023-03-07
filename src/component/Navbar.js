@@ -6,22 +6,22 @@ export default class Navbar extends Component {
     render() {
         return (
             <Box sx={{ flexGrow: 1 }}>
-                <AppBar position="static">
-                    <Toolbar>
+                <AppBar position="static" sx={{ flexGrow: 1,backgroundColor:"#1F2833" }}>
+                    <Toolbar >
                         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                            <Link to="/" style={{ color: "white", textDecoration: "none" }}>Home</Link>
+                            <Link to="/" style={{ color: "#66FCF1", fontWeight:"bold", textDecoration: "none" }}>Home</Link>
                         </Typography>
                         <Button color="inherit">
-                            <Link to="/product" style={{ color: "white", textDecoration: "none" }}>Product</Link>
+                            <Link to="/product" style={{ color: "#66FCF1", fontWeight:"bold", textDecoration: "none" }}>Product</Link>
                         </Button>
                         <Button color="inherit">
-                            <Link to="/cart" style={{ color: "white", textDecoration: "none" }}>Cart</Link>
+                            <Link to="/cart" style={{ color: "#66FCF1", fontWeight:"bold", textDecoration: "none" }}>Cart</Link>
                         </Button>
                         <Button color="inherit">
-                            <Link to="/pay" style={{ color: "white", textDecoration: "none" }}>Pay</Link>
+                            <Link to="/pay" style={{ color: "#66FCF1", fontWeight:"bold", textDecoration: "none" }}>Pay</Link>
                         </Button>
                         <Button color="inherit">
-                            <Link to="/contact" style={{ color: "white", textDecoration: "none" }}>Contact</Link>
+                            <Link to="/contact" style={{ color: "#66FCF1", fontWeight:"bold", textDecoration: "none" }}>Contact</Link>
                         </Button>
                     </Toolbar>
                 </AppBar>
