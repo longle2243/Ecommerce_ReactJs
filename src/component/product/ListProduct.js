@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Box, TextField, Card, CardContent, CardActionArea, CardMedia, Typography } from '@mui/material';
+import { Box, Button, TextField, Card, CardContent, CardActionArea, CardMedia, Typography } from '@mui/material';
 import SearchBar from '../sreachBar';
 
 
@@ -30,12 +30,23 @@ export default function ListProduct() {
     console.log(filter);
   }
 
+  function searchIpad(e) {
+    console.log(e);
+    const filter = listProduct.filter((product) => { return product.data.categoryProduct==e })
+    setFilterProduct(filter)
+    // console.log(filter);
+  }
+
   return (
     <div style={{ marginTop: '50px' }}>
       {/* <SearchBar/> */}
       <Box display="flex" alignItems="center" justifyContent="center" flexDirection="row">
         <Box display="flex" alignItems="center" justifyContent="center" flexDirection="row">
           <TextField label="Search product" variant="outlined" size="small" value={inputSearch} onChange={handleSearchName} />
+          <button onClick={() => searchIpad("")} >All</button>
+          <button onClick={() => searchIpad("SmartPhone")} >Phone</button>
+          <button onClick={() => searchIpad("Tablet")} >Tablet</button>
+
         </Box>
       </Box>
       <Box display="flex" alignItems="center" justifyContent="center" flexDirection="row" flexWrap="wrap" sx={{ maxWidth: 1600, m: "auto" }}>
@@ -54,6 +65,7 @@ export default function ListProduct() {
                             <Typography gutterBottom variant="h5" component="div">{product.data.priceProduct}</Typography>
                             <Typography variant="body2" color="text.secondary">{product.data.nameProduct}</Typography>
                             <Typography variant="body2" color="text.secondary">{product.data.categoryProduct}</Typography>
+                            <Button variant="contained" color="success" size="small" sx={{ marginRight: "100px" }} >Add Cart</Button>
                           </CardContent>
                         </CardActionArea>
                       </Card>
@@ -76,6 +88,7 @@ export default function ListProduct() {
                         <Typography gutterBottom variant="h5" component="div">{product.data.priceProduct}</Typography>
                         <Typography variant="body2" color="text.secondary">{product.data.nameProduct}</Typography>
                         <Typography variant="body2" color="text.secondary">{product.data.categoryProduct}</Typography>
+                        <Button variant="contained" color="success" size="small" sx={{ marginRight: "100px" }} >Add Cart</Button>
                       </CardContent>
                     </CardActionArea>
                   </Card>
