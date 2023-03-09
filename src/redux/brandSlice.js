@@ -3,7 +3,11 @@ import { createSlice } from '@reduxjs/toolkit'
 const brandSlice = createSlice({
   name: 'brand',
   initialState: [
-    {id: "1000000000000",brand: { namebrand: "Macbook Air 2" }}
+    {id: "1000000000000",brand: { namebrand: "Apple" }},
+    {id: "1000000000000",brand: { namebrand: "Samsung" }},
+    {id: "1000000000000",brand: { namebrand: "Xiaomi" }},
+    {id: "1000000000000",brand: { namebrand: "Oppo" }},
+    {id: "1000000000000",brand: { namebrand: "Realme" }},
   ],
   reducers: {
     setBrand: (state, action) => {

@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const cartSlice = createSlice({
     name: 'cart',
     initialState: [
+        {id: "1000000000000",data: { nameProduct: "Iphone 11", priceProduct: "16", amountProduct: "1", categoryProduct: "SmartPhone", brand: "Apple", img: "./img/ip11.JPG" }},
 
     ],
     reducers: {

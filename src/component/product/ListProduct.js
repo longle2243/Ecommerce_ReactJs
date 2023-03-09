@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { Box, InputLabel, Button, TextField, Card, CardContent, CardActionArea, CardMedia, Typography, Select, FormControl, MenuItem } from '@mui/material';
-import SearchBar from '../sreachBar';
-import { addCart } from '../../redux/cartSlice';
+import { Box, InputLabel, Button, TextField, Select, FormControl, MenuItem } from '@mui/material';
 import CartProduct from './CartProduct';
 
 
@@ -72,11 +69,9 @@ export default function ListProduct() {
         </Box>
 
         <Box display="flex" alignItems="center" justifyContent="center" flexDirection="row">
-          <Button variant="contained" color="success" size="small" sx={{ marginRight: "10px" }} onClick={() => searchBrand("Apple")} >Apple</Button>
-          <Button variant="contained" color="success" size="small" sx={{ marginRight: "10px" }} onClick={() => searchBrand("Samsung")} >Samsung</Button>
-          <Button variant="contained" color="success" size="small" sx={{ marginRight: "10px" }} onClick={() => searchBrand("Xiaomi")} >Xiaomi</Button>
-          <Button variant="contained" color="success" size="small" sx={{ marginRight: "10px" }} onClick={() => searchBrand("Oppo")} >Oppo</Button>
-          <Button variant="contained" color="success" size="small" sx={{ marginRight: "10px" }} onClick={() => searchBrand("Realme")} >Realme</Button>
+          {listBrand.map(brand=>(
+          <Button variant="contained" color="success" size="small" sx={{ marginRight: "10px" }} onClick={() => searchBrand(brand.brand.namebrand)} >{brand.brand.namebrand}</Button>
+          ))}
         </Box>
 
       </Box>
@@ -86,18 +81,11 @@ export default function ListProduct() {
           ? filterProduct.map((check) => {
             return listProduct.map((product) => {
               if (product.data == check.data) {
-                return (
-                  <CartProduct product={product} />
-                );
-              } else {
-                return null;
-              }
+                return (<CartProduct product={product} />)
+              } 
             });
-          })
-          : listProduct.map((product) => {
-            return (
-              <CartProduct product={product} />
-            );
+          })  : listProduct.map((product) => {
+            return (<CartProduct product={product} />)
           })}
       </Box>
     </div>

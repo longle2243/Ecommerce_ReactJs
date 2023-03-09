@@ -31,16 +31,21 @@ export default function SummaryCart() {
   return (
     <div style={{ marginTop: '50px' }}>
       {isFormOpen && (
-        <Card sx={{ maxWidth: 345, boxShadow: 5, position: 'absolute', m: "auto", ml:10 }}>
-          <CardContent sx={{m:"auto"}}>
-            <Typography><TextField label="Name" onChange={e => setName(e.target.value)} /></Typography>
-            <Typography sx={{mt:2}}><TextField label="Phone" onChange={e => setPhone(e.target.value)} /></Typography>
-            <Button variant="contained" color="success" size="small" sx={{ marginRight: "10px", mt: 5 }} onClick={() => handleAddPay()}>Đặt Hàng</Button>
-            <Button variant="contained" color="error" size="small" sx={{ marginRight: "10px", mt: 5 }} onClick={() => setIsFormOpen(false)}>Hủy</Button>
-          </CardContent>
-        </Card>
+        <Box display="flex" justifyContent="center" alignItems="center">
+          <Card sx={{ maxWidth: 345, boxShadow: 5, position: 'absolute', m: "auto"}}>
+            <CardContent sx={{ m: "auto" }}>
+              <Typography><TextField label="Name" size="small" onChange={e => setName(e.target.value)} /></Typography>
+              <Typography sx={{ mt: 2 }}><TextField label="Phone" size="small" onChange={e => setPhone(e.target.value)} /></Typography>
+              <Box display="flex" justifyContent="center" alignItems="center">
+                <Button variant="contained" color="success" size="small" sx={{ marginRight: "10px", mt: 5 }} onClick={() => handleAddPay()}>Đặt Hàng</Button>
+                <Button variant="contained" color="error" size="small" sx={{ marginRight: "10px", mt: 5 }} onClick={() => setIsFormOpen(false)}>Hủy</Button>
+              </Box>
+            </CardContent>
+          </Card>
+        </Box>
+
       )}
-      <Table sx={{ minWidth: 650, maxWidth: 1000, m: "auto", mt: "50px" }}>
+      <Table sx={{ minWidth: 650, maxWidth: 1000, m: "auto" }}>
         <TableRow>
           <TableCell></TableCell>
           <TableCell>TỔNG TIỀN</TableCell>
