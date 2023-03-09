@@ -18,11 +18,11 @@ export default function Banner() {
   }, []);
 
   return (
-    <div>
+    <div style={{marginBottom:"50px"}}>
       <Card>
         {console.log(imgno)}
         <CardMedia sx={{  height: "90%", width: "99%", m:"auto", position: "absolute", objectFit: "cover" }} image={listProduct[imgno].data.img} />
-        <div style={{height:"900px"}}></div>
+        <div style={{height:"850px"}}></div>
       </Card>
     </div>
   );

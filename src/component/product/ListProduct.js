@@ -66,7 +66,6 @@ export default function ListProduct() {
 
         <Box display="flex" alignItems="center" justifyContent="center" flexDirection="column" sx={{ mt: 0.5 }}>
           <TextField label="Search ..." variant="outlined" size="small" value={inputSearch} onChange={handleSearchName} />
-
           <FormControl sx={{ m: 1, minWidth: 220 }} size="small">
             <InputLabel id="demo-simple-select-label">TYPE</InputLabel>
             <Select value={categoryProduct} onChange={handleSelect} label="Category product">
@@ -83,7 +82,6 @@ export default function ListProduct() {
           <Button variant="contained" color="success" size="small" sx={{ marginRight: "10px" }} onClick={() => searchBrand("Apple")} >Apple</Button>
           <Button variant="contained" color="success" size="small" sx={{ marginRight: "10px" }} onClick={() => searchBrand("Samsung")} >Samsung</Button>
           <Button variant="contained" color="success" size="small" sx={{ marginRight: "10px" }} onClick={() => searchBrand("Xiaomi")} >Xiaomi</Button>
-
         </Box>
 
       </Box>
