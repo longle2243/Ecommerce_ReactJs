@@ -123,7 +123,7 @@ export default function ListProduct() {
                       <CardContent>
                         <Typography gutterBottom variant="h5" component="div">{product.data.priceProduct}tr VND</Typography>
                         <Typography variant="body2" color="text.secondary">{product.data.nameProduct}</Typography>
-                        <Button variant="contained" color="success" size="small" sx={{ marginRight: "100px" }} onClick={() => handleAddCart(product.id)}>Add Cart</Button>
+                        <Button variant="contained" color="success" size="small" sx={{ marginRight: "100px", mt:5 }} onClick={() => handleAddCart(product.id)}>Add Cart</Button>
                       </CardContent>
                     </CardActionArea>
                   </Card>
