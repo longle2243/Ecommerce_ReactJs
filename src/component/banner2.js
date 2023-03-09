@@ -57,11 +57,13 @@ export default function Banner2() {
     <div style={{ marginTop: '50px' }}>
         <Box display="flex" alignItems="center" justifyContent="center" flexDirection="row">
 
-          <Box display="flex" alignItems="center" justifyContent="center" flexDirection="row">
-            <Button variant="contained" color="success" size="small" sx={{ marginRight: "10px" }} onClick={() => searchBrand("Apple")} >Apple</Button>
-            <Button variant="contained" color="success" size="small" sx={{ marginRight: "10px" }} onClick={() => searchBrand("Samsung")} >Samsung</Button>
-            <Button variant="contained" color="success" size="small" sx={{ marginRight: "10px" }} onClick={() => searchBrand("Xiaomi")} >Xiaomi</Button>
-          </Box>
+        <Box display="flex" alignItems="center" justifyContent="center" flexDirection="row">
+          <Button variant="contained" color="success" size="small" sx={{ marginRight: "10px" }} onClick={() => searchBrand("Apple")} >Apple</Button>
+          <Button variant="contained" color="success" size="small" sx={{ marginRight: "10px" }} onClick={() => searchBrand("Samsung")} >Samsung</Button>
+          <Button variant="contained" color="success" size="small" sx={{ marginRight: "10px" }} onClick={() => searchBrand("Xiaomi")} >Xiaomi</Button>
+          <Button variant="contained" color="success" size="small" sx={{ marginRight: "10px" }} onClick={() => searchBrand("Oppo")} >Oppo</Button>
+          <Button variant="contained" color="success" size="small" sx={{ marginRight: "10px" }} onClick={() => searchBrand("Realme")} >Realme</Button>
+        </Box>
 
         </Box>
 

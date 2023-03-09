@@ -53,16 +53,8 @@ export default function ListProduct() {
     // console.log(filter);
   }
 
-  const handleAddCart = (e) => {
-    // console.log(e);
-    const cart = listProduct.filter((product) => { return product.id == e })
-    // console.log(cart[0].data);
-    dispatch(addCart(cart[0].data));
-  };
-
   return (
     <div style={{ marginTop: '50px' }}>
-      {/* <SearchBar/> */}
       <Box display="flex" alignItems="center" justifyContent="center" flexDirection="row">
 
         <Box display="flex" alignItems="center" justifyContent="center" flexDirection="column" sx={{ mt: 0.5 }}>
@@ -83,6 +75,8 @@ export default function ListProduct() {
           <Button variant="contained" color="success" size="small" sx={{ marginRight: "10px" }} onClick={() => searchBrand("Apple")} >Apple</Button>
           <Button variant="contained" color="success" size="small" sx={{ marginRight: "10px" }} onClick={() => searchBrand("Samsung")} >Samsung</Button>
           <Button variant="contained" color="success" size="small" sx={{ marginRight: "10px" }} onClick={() => searchBrand("Xiaomi")} >Xiaomi</Button>
+          <Button variant="contained" color="success" size="small" sx={{ marginRight: "10px" }} onClick={() => searchBrand("Oppo")} >Oppo</Button>
+          <Button variant="contained" color="success" size="small" sx={{ marginRight: "10px" }} onClick={() => searchBrand("Realme")} >Realme</Button>
         </Box>
 
       </Box>
@@ -103,7 +97,6 @@ export default function ListProduct() {
           : listProduct.map((product) => {
             return (
               <CartProduct product={product} />
-
             );
           })}
       </Box>
