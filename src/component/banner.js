@@ -22,6 +22,7 @@ export default function Banner() {
       <Card>
         {console.log(imgno)}
         <CardMedia sx={{  height: "90%", width: "99%", m:"auto", position: "absolute", objectFit: "cover" }} image={listProduct[imgno].data.img} />
+        <div style={{height:"900px"}}></div>
       </Card>
     </div>
   );

@@ -49,7 +49,7 @@ export default function Pay() {
               : 0}
           </TableCell>
           <TableCell align="right">
-            <Button variant="contained" color="success" size="small" sx={{ marginRight: "10px" }} onClick={() => handlePay()} >Nhận hàng thành công</Button>
+            <Button variant="contained" color="success" size="small" sx={{ marginRight: "10px" }} onClick={() => handlePay()} >Thanh Toán</Button>
           </TableCell>
         </TableRow>
       </Table>
