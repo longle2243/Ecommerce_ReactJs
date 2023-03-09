@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Box, InputLabel, Button, TextField, Card, CardContent, CardActionArea, CardMedia, Typography, Select, FormControl, MenuItem } from '@mui/material';
 import SearchBar from '../sreachBar';
 import { addCart } from '../../redux/cartSlice';
+import CartProduct from './CartProduct';
 
 
 const options = [
@@ -92,21 +93,7 @@ export default function ListProduct() {
             return listProduct.map((product) => {
               if (product.data == check.data) {
                 return (
-                  <Box flexBasis="25%" display="flex" alignItems="center" justifyContent="center" flexDirection="column" sx={{ maxWidth: 1000, m: "auto" }} key={product.id}>
-                    {/* {console.log(check.data)} */}
-                    <Link style={{ color: "blue", textDecoration: "none", margin: "auto", marginTop: 30 }}>
-                      <Card sx={{ maxWidth: 345, boxShadow: 5 }}>
-                        <CardMedia sx={{ height: 300, width: 300 }} image={product.data.img} />
-                        <CardActionArea>
-                          <CardContent>
-                            <Typography gutterBottom variant="h5" component="div">{product.data.priceProduct}tr VND</Typography>
-                            <Typography variant="body2" color="text.secondary">{product.data.nameProduct}</Typography>
-                            <Button variant="contained" color="success" size="small" sx={{ marginRight: "100px" }} onClick={() => handleAddCart(product.id)}>Add Cart</Button>
-                          </CardContent>
-                        </CardActionArea>
-                      </Card>
-                    </Link>
-                  </Box>
+                  <CartProduct product={product} />
                 );
               } else {
                 return null;
@@ -115,20 +102,8 @@ export default function ListProduct() {
           })
           : listProduct.map((product) => {
             return (
-              <Box flexBasis="25%" display="flex" alignItems="center" justifyContent="center" flexDirection="column" sx={{ maxWidth: 1000, m: "auto" }} key={product.id}>
-                <Link style={{ color: "blue", textDecoration: "none", margin: "auto", marginTop: 30 }} >
-                  <Card sx={{ maxWidth: 345, boxShadow: 5 }}>
-                    <CardMedia sx={{ height: 300, width: 300 }} image={product.data.img} />
-                    <CardActionArea>
-                      <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">{product.data.priceProduct}tr VND</Typography>
-                        <Typography variant="body2" color="text.secondary">{product.data.nameProduct}</Typography>
-                        <Button variant="contained" color="success" size="small" sx={{ marginRight: "100px", mt:5 }} onClick={() => handleAddCart(product.id)}>Add Cart</Button>
-                      </CardContent>
-                    </CardActionArea>
-                  </Card>
-                </Link>
-              </Box>
+              <CartProduct product={product} />
+
             );
           })}
       </Box>

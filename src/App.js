@@ -6,7 +6,7 @@ import Home from './page/Home';
 import Cart from './page/Cart';
 import Pay from './page/Pay';
 import Contact from './page/Contact';
-import ListProduct from './component/product/ListProduct';
+import Product from './page/Product';
 
 export default class App extends Component {
   render() {
@@ -15,7 +15,7 @@ export default class App extends Component {
       <Routes>
         <Route path="/" element={<Navbar />}>
           <Route index element={<Home />} />
-          <Route path="product/" element={ <ListProduct />} />
+          <Route path="product/" element={ <Product />} />
           <Route path="cart/" element={ <Cart />} />
           <Route path="pay/" element={ <Pay />} />
           <Route path="contact/" element={ <Contact />} />
